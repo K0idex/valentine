@@ -1,0 +1,114 @@
+:root{
+  --bg1:#2b0a12; /* deep burgundy */
+  --bg2:#3b0f22; /* deep rose */
+  --accent:#ff6b8a;
+  --accent-2:#ffb6c1;
+  --card:rgba(255,255,255,0.12);
+  --card-border:rgba(255,255,255,0.06);
+  --muted:#e8c9d6;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+.bg, body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+}
+body{
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,107,138,0.06), transparent 6%),
+              radial-gradient(900px 420px at 95% 90%, rgba(255,182,193,0.04), transparent 8%),
+              linear-gradient(180deg,var(--bg1),var(--bg2));
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:32px 20px 48px;
+  min-height:100vh;
+}
+.wrap{width:100%;max-width:440px;margin:0 auto}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border-radius:20px;
+  padding:22px 20px;
+  box-shadow:0 10px 40px rgba(15,6,8,0.55), inset 0 1px 0 rgba(255,255,255,0.02);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  border:1px solid var(--card-border);
+  backdrop-filter: blur(8px) saturate(120%);
+.card{overflow:visible}
+}
+.hero{display:flex;justify-content:center;align-items:center}
+.heart{width:64px;height:64px;color:var(--accent);filter:drop-shadow(0 10px 28px rgba(255,107,138,0.22))}
+.pulse-wrap{display:flex;align-items:center;justify-content:center}
+.pulse-heart{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.pulse-heart .heart{width:72px;height:72px}
+.pulse-heart::before{content:'';position:absolute;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,107,138,0.12), transparent 30%);z-index:0}
+.title{font-family:Great Vibes, serif;margin:6px 0 6px;font-size:40px;color:var(--accent-2);text-shadow:0 6px 18px rgba(0,0,0,0.45)}
+.subtitle{font-size:13px;color:var(--muted);margin-top:2px}
+.typewriter{min-height:170px;display:flex;align-items:flex-start;justify-content:center;padding:12px 12px}
+#message{color:var(--muted);font-size:17px;line-height:1.6;text-align:left;max-width:360px;font-weight:400;letter-spacing:0.1px}
+.typewriter br{display:block;content:''}
+.cursor{color:var(--accent);font-weight:700;margin-left:8px;animation:blink 1s steps(2,start) infinite;opacity:0.95}
+.cursor.spark{color:var(--accent-2);transform:scale(1.05)}
+@keyframes blink{50%{opacity:0}}
+.btn{background:linear-gradient(90deg,var(--accent),#ff3b6b);color:white;border:none;padding:12px 18px;border-radius:14px;font-weight:700;font-size:16px;letter-spacing:0.2px}
+.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center}
+.btn:active{transform:translateY(1px)}
+.btn .heart-ico{width:16px;height:16px;display:inline-block}
+
+.btn:focus{outline:3px solid rgba(255,182,193,0.12);outline-offset:4px}
+.hidden{display:none}
+.note{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* small nice flourish for CTA */
+.cta .btn{box-shadow:0 8px 18px rgba(255,107,138,0.18)}
+
+@media (min-width:600px){
+  .wrap{max-width:520px}
+  .title{font-size:44px}
+}
+
+/* simple fade transition for card content swap */
+.card.fade-out{opacity:0;transform:translateY(6px);transition:opacity .32s ease,transform .32s ease}
+.card.fade-in{opacity:1;transform:translateY(0);transition:opacity .36s ease,transform .36s ease}
+
+/* Floating background */
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float-item{position:absolute;bottom:-8vh;width:32px;height:32px;background-size:contain;background-repeat:no-repeat;opacity:.95;filter:drop-shadow(0 6px 14px rgba(118,40,80,0.08));animation-name:floatUp;animation-timing-function:linear;animation-iteration-count:infinite}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0deg);opacity:0}
+  8%{opacity:1}
+  50%{transform:translateY(-55vh) rotate(8deg)}
+  100%{transform:translateY(-130vh) rotate(0deg);opacity:0}
+}
+
+/* Invite photo: force cover the container */
+.invite-photo-container{position:relative}
+.invite-photo{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Footer hero image */
+.hero-image-container{margin-top:14px;display:flex;justify-content:center}
+.hero-image{width:100%;max-width:380px;height:96px;border-radius:12px;object-fit:cover;display:block;box-shadow:0 14px 36px rgba(11,6,10,0.45);border:1px solid rgba(255,255,255,0.04)}
+
+@media (min-width:600px){
+  .hero-image{height:120px;max-width:460px}
+}
+
+/* Main hero/banner used per card */
+.hero-banner{width:80%;max-width:420px;height:220px;border-radius:12px;overflow:hidden;margin:6px auto;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)), url('images/hero.jpg') center / cover no-repeat;border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 30px rgba(11,6,10,0.36)}
+
+@media (max-width:420px){
+  .hero-banner{width:92%;height:200px}
+}
+
+@media (min-width:600px){
+  .hero-banner{height:300px}
+}
+
+/* Music control button */
+.music-control{position:fixed;left:16px;top:16px;z-index:60;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));color:var(--muted);border:1px solid rgba(255,255,255,0.06);width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 8px 20px rgba(0,0,0,0.4);backdrop-filter:blur(6px);}
+.music-control.playing{background:linear-gradient(90deg,var(--accent),#ff3b6b);color:white}
+.music-control.loading{opacity:0.7}
+.music-control:active{transform:translateY(1px)}
+
+
+
+
